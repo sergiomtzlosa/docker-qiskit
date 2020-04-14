@@ -1,7 +1,7 @@
 version: "2"
 services:
-  qiskit:
-    image: qiskit-image
+  qiskit-service:
+    image: qiskit
     container_name: qiskit-container
     build:
       context: ./
