@@ -1,0 +1,7 @@
+cvxopt
+jupyter
+virtualenv
+msgpack
+pyscf
+scipy 
+matplotlib
