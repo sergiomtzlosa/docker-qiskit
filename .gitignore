@@ -4,3 +4,4 @@ qiskit-offline-docker/prod/rootfs-debian-buster.tar.xz
 qiskit-offline-docker/dev/docker-image-buster-slim.tar.gz
 qiskit-offline-docker/dev/rootfs-debian-buster.tar.xz
 notebooks/.ipynb_checkpoints
+examples/.ipynb_checkpoints
