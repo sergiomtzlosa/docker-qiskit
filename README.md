@@ -8,6 +8,8 @@ This is a docker image with Qiskit 0.18.0 including:
 - Qiskit Aqua 0.6.5
 - Qiskit IBMQ Provider 0.6.0
 
+It also has keras, matplotlib, pandas, seaborn, scikit-learn, opencv-python, tqdm, pillow, image, scipy and regex.
+
 There are two environments: development and production (default)
 
 You can change the Dockerfile on the docker-compose.yml file to switch between those environments.
