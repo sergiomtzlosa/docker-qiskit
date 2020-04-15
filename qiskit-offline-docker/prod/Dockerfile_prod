@@ -1,5 +1,4 @@
 FROM scratch
-#FROM python:3.8.2-buster
 MAINTAINER Sergio Martinez-Losa
 
 ADD rootfs-debian-buster.tar.xz /

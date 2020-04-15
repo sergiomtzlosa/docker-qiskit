@@ -1,5 +1,4 @@
 FROM scratch
-#FROM debian:buster-slim
 MAINTAINER Sergio Martinez-Losa
 
 ADD rootfs-debian-buster.tar.xz /
