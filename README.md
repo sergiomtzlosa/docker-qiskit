@@ -12,7 +12,7 @@ There are two environments: development and production (default)
 
 You can change the Dockerfile on the docker-compose.yml file to switch between those environments.
 
-The folder *qiskit-offline-docker* leads an offline installation of docker images, so you can build them on your own, but in that case you must create a Debian Buster subsystem with debootstrap.
+The folder *qiskit-offline-docker* leads an offline installation of docker images, so you can build them on your own, but in that case you must create a Debian Buster subsystem with *debootstrap*.
 
 ```
 sudo apt-get install debootstrap
