@@ -30,6 +30,12 @@ Run the image with docker-compose command:
 docker-compose up
 ```
 
+Inspect logs from service to get the jupyter token:
+
+```
+docker-compose logs -f qiskit-service
+```
+
 **This image exposes the jupyter notebook on port 8889: http://YOUR_IP:8889**
 
 Default image on docker hub is production environment:
