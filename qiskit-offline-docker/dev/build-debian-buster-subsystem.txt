@@ -1,0 +1,2 @@
+sudo apt-get install debootstrap
+sudo debootstrap buster buster http://deb.debian.org/debian && sudo tar -f rootfs-debian-buster.tar.xz -C buster -c .

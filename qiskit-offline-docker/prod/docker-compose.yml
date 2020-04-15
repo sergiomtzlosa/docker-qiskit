@@ -1,0 +1,20 @@
+version: "2"
+services:
+  qiskit-service:
+    image: qiskit
+    container_name: qiskit-container
+    build:
+      context: ./
+      dockerfile: ./Dockerfile_prod # production environment
+    environment:
+#      - QISKIT_USER=
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./notebooks:/home/qiskit/notebooks
+      - ./examples:/home/qiskit/examples
+    ports:
+      - 8889:8889
+    restart: unless-stopped

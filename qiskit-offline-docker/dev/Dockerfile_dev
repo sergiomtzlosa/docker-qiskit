@@ -1,0 +1,67 @@
+FROM scratch
+#FROM debian:buster-slim
+MAINTAINER Sergio Martinez-Losa
+
+ADD rootfs-debian-buster.tar.xz /
+
+ENV QISKIT_USER=qiskit
+
+# Optional: set your IBM QISKIT API TOKEN HERE
+#ENV QISKIT_API_TOKEN="UPDATE_THIS_API_TOKEN"
+
+# CREATE NEW USER
+RUN useradd --create-home -s /bin/bash $QISKIT_USER
+
+ENV QISKIT_DIR=/home/$QISKIT_USER
+
+COPY requirements.txt $QISKIT_DIR
+
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y build-essential poppler-utils texlive-latex-base texlive-latex-extra libopenblas-dev \
+                       sudo unzip wget nano poppler-utils cmake git libssl-dev zlib1g-dev libncurses5-dev libgdbm-dev \
+                       libnss3-dev libssl-dev libreadline-dev libffi-dev curl python3-pip python3-dev
+
+WORKDIR $QISKIT_DIR
+
+RUN mkdir -p notebooks
+
+RUN pip3 install pip --upgrade
+RUN pip install -r requirements.txt
+
+# INSTALL EACH COMPONENT OF QISKIT FROM SOOURCE ONE BY ONE, developers ONLY!!!! (Advanced) UNSTABLE
+RUN pip install cython
+RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-terra.git
+RUN cd qiskit-terra && pip install -r requirements-dev.txt && pip install -e .
+
+RUN pip install scikit-build
+RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-aer
+RUN cd qiskit-aer &&  pip install -e .
+
+RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-ignis.git
+RUN cd qiskit-ignis && pip install -r requirements-dev.txt && pip install -e .
+
+RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-ibmq-provider.git
+RUN cd qiskit-ibmq-provider && pip install -r requirements-dev.txt && pip install -e .
+
+RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-aqua.git
+RUN cd qiskit-aqua && pip install -r requirements-dev.txt && pip install -e .
+
+# FINISHING PACKAGES
+RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python tqdm pillow image scipy regex
+
+# SET ROOT PERMISSION FOR ALL USERS
+RUN chown -R $QISKIT_USER:$QISKIT_USER /home/$QISKIT_USER/
+RUN usermod -aG sudo $QISKIT_USER
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+# CHANGE TO NEW USER
+USER $QISKIT_USER
+
+# RUN JUPYTER ON PORT 8889
+CMD [ "jupyter" , "notebook",  "--ip=0.0.0.0", "--port=8889", "--no-browser" ]
+
+# Get the jupyter token : docker logs -f <NAME_OF_THIS_IMAGE>
+
+# This can image can be run as (update the token value)
+# docker run -p 8889:8889 -it --env QX_API_TOKEN="your_api_token" <NAME_OF_THIS_IMAGE>:TAG
+

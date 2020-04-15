@@ -1,0 +1,71 @@
+FROM scratch
+#FROM python:3.8.2-buster
+MAINTAINER Sergio Martinez-Losa
+
+ADD rootfs-debian-buster.tar.xz /
+
+ENV QISKIT_USER=qiskit
+
+# Optional: set your IBM QISKIT API TOKEN HERE
+#ENV QISKIT_API_TOKEN="UPDATE_THIS_API_TOKEN"
+
+# CREATE NEW USER
+RUN useradd --create-home -s /bin/bash $QISKIT_USER
+
+ENV QISKIT_DIR=/home/$QISKIT_USER
+
+COPY requirements.txt $QISKIT_DIR
+
+ADD Python-3.8.2.tar.xz $QISKIT_DIR
+
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y build-essential poppler-utils texlive-latex-base texlive-latex-extra libopenblas-dev \
+                       sudo unzip wget nano poppler-utils cmake git libssl-dev zlib1g-dev libncurses5-dev libgdbm-dev \
+                       libnss3-dev libssl-dev libreadline-dev libffi-dev curl libsqlite3-dev python3-pip python-pip
+
+WORKDIR $QISKIT_DIR
+
+# Install python 3.8.2
+RUN cd $QISKIT_DIR && cd Python-3.8.2 && ./configure --enable-optimizations && make -j 4 && sudo make altinstall
+RUN python --version && python3 --version
+RUN pip --version && pip3 --version
+RUN which pip && which pip3
+
+RUN mkdir -p notebooks
+
+RUN pip3 install pip --upgrade
+RUN pip install -r requirements.txt
+
+# Release versions: https://qiskit.org/documentation/release_notes.html
+# There are 3 ways to install QISKIT, listed below (default option 1)
+
+# OPTION 1: INSTALL QISKIT FROM PIP (easy way) STABLE
+RUN pip install qiskit==0.18.0
+
+# OPTION 2: INSTALL EACH COMPONENT FROM PIP (easy way) STABLE
+#RUN pip install qiskit-terra==0.13.0 qiskit-aer==0.5.0 qiskit-ignis==0.3.0 qiskit-ibmq-provider==0.6.0 qiskit-aqua==0.6.5
+
+# OPTION 3: INSTALL QISKIT FROM SOURCE (easy way) STABLE
+#RUN pip install tox
+#RUN cd $QISKIT_DIR && wget https://github.com/Qiskit/qiskit/archive/0.18.0.zip && unzip 0.18.0.zip && mv qiskit-0.18.0 qiskit
+#RUN cd qiskit && pip install -r requirements-dev.txt && pip install -e .
+
+# FINISHING PACKAGES
+RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python tqdm pillow image scipy regex
+
+# SET ROOT PERMISSION FOR ALL USERS
+RUN chown -R $QISKIT_USER:$QISKIT_USER /home/$QISKIT_USER/
+RUN usermod -aG sudo $QISKIT_USER
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+# CHANGE TO NEW USER
+USER $QISKIT_USER
+
+# RUN JUPYTER ON PORT 8889
+CMD [ "jupyter" , "notebook",  "--ip=0.0.0.0", "--port=8889", "--no-browser" ]
+
+# Get the jupyter token : docker logs -f <NAME_OF_THIS_IMAGE>
+
+# This can image can be run as (update the token value)
+# docker run -p 8889:8889 -it --env QX_API_TOKEN="your_api_token" <NAME_OF_THIS_IMAGE>:TAG
+

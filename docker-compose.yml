@@ -15,6 +15,7 @@ services:
       - JUPYTER_ENABLE_LAB=yes
     volumes:
       - ./notebooks:/home/qiskit/notebooks
+      - ./examples:/home/qiskit/examples
     ports:
       - 8889:8889
     restart: unless-stopped

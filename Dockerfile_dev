@@ -12,7 +12,6 @@ RUN useradd --create-home -s /bin/bash $QISKIT_USER
 ENV QISKIT_DIR=/home/$QISKIT_USER
 
 COPY requirements.txt $QISKIT_DIR
-COPY examples $QISKIT_DIR/examples
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y build-essential poppler-utils texlive-latex-base texlive-latex-extra libopenblas-dev \

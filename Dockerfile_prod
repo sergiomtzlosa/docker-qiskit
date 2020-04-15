@@ -12,12 +12,11 @@ RUN useradd --create-home -s /bin/bash $QISKIT_USER
 ENV QISKIT_DIR=/home/$QISKIT_USER
 
 COPY requirements.txt $QISKIT_DIR
-COPY examples $QISKIT_DIR/examples
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y build-essential poppler-utils texlive-latex-base texlive-latex-extra libopenblas-dev \
                        sudo unzip wget nano poppler-utils cmake git libssl-dev zlib1g-dev libncurses5-dev libgdbm-dev \
-                       libnss3-dev libssl-dev libreadline-dev libffi-dev curl
+                       libnss3-dev libssl-dev libreadline-dev libffi-dev curl libsqlite3-dev
 
 WORKDIR $QISKIT_DIR
 

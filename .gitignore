@@ -1,2 +1,6 @@
 .DS_Store
-qiskit-offline-docker
+qiskit-offline-docker/prod/docker-python3.8.2-buster.tar.gz
+qiskit-offline-docker/prod/rootfs-debian-buster.tar.xz
+qiskit-offline-docker/dev/docker-image-buster-slim.tar.gz
+qiskit-offline-docker/dev/rootfs-debian-buster.tar.xz
+notebooks/.ipynb_checkpoints
