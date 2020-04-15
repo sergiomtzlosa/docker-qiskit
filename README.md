@@ -1,6 +1,6 @@
 # QISKIT 0.18.0 release on Docker
 
-Qiskit is an open-source framework for quantum computing. It provides tools for creating and manipulating quantum programs and running them on prototype quantum devices on IBM Q Experience or on simulators on a local computer
+Qiskit is an open-source framework for quantum computing. It provides tools for creating and manipulating quantum programs and running them on prototype quantum devices on IBM Q Experience or on simulators on a local computer.
 
 This is a docker image with Qiskit 0.18.0 including:
 
