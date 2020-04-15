@@ -1,5 +1,4 @@
 # QISKIT 0.18.0 release on Docker
--------------------------------
 
 This is a docker image with Qiskit 0.18.0 including:
 
