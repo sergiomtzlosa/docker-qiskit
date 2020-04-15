@@ -21,7 +21,7 @@ sudo debootstrap buster buster http://deb.debian.org/debian && sudo tar -f rootf
 
 ```
 
-On both Dockerfiles (dev and prod), you can set your QISKIT IBM API Key on QISKIT_API_TOKEN variable.
+On both Dockerfiles (dev and prod), you can set your QISKIT IBM API Key on QISKIT_API_TOKEN variable (OPTIONAL).
 
 Run the image with docker-compose command:
 
@@ -32,3 +32,9 @@ docker-compose up
 Default image on docker hub is production environment:
 
 https://hub.docker.com/repository/docker/sergiomtzlosa/qiskit
+
+Pull the image from docker hub:
+
+```
+docker pull sergiomtzlosa/qiskit:latest
+```
