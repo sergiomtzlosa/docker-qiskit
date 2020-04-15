@@ -21,7 +21,7 @@ sudo debootstrap buster buster http://deb.debian.org/debian && sudo tar -f rootf
 
 ```
 
-On both Dockerfile you can set your QISKIT IBM API Key on QISKIT_API_TOKEN variable.
+On both Dockerfiles (dev and prod), you can set your QISKIT IBM API Key on QISKIT_API_TOKEN variable.
 
 Run the image with docker-compose command:
 
