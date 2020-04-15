@@ -1,0 +1,34 @@
+# QISKIT 0.18.0 release on Docker
+-------------------------------
+
+This is a docker image with Qiskit 0.18.0 including:
+
+- Qiskit Terra 0.13.0
+- Qiskit Aer 0.5.0
+- Qiskit Ignis 0.3.0
+- Qiskit Aqua 0.6.5
+- Qiskit IBMQ Provider 0.6.0
+
+There are two environments: development and production (default)
+
+You can change the Dockerfile on the docker-compose.yml file to switch between those environments.
+
+The folder qiskit-offline-docker leads an offline installation of docker images, so you can build them on your own, but in that case you must create a Debian BUster subsystem with debootstrap.
+
+```
+sudo apt-get install debootstrap
+sudo debootstrap buster buster http://deb.debian.org/debian && sudo tar -f rootfs-debian-buster.tar.xz -C buster -c .
+
+```
+
+On both Dockerfile you can set your QISKIT IBM API Key on QISKIT_API_TOKEN variable.
+
+Run the image with docker-compose command:
+
+```
+docker-compose up
+```
+
+Default image on docker hub is production environment:
+
+https://hub.docker.com/repository/docker/sergiomtzlosa/qiskit

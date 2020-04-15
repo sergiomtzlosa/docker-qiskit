@@ -55,6 +55,6 @@ CMD [ "jupyter" , "notebook",  "--ip=0.0.0.0", "--port=8889", "--no-browser" ]
 
 # Get the jupyter token : docker logs -f <NAME_OF_THIS_IMAGE>
 
-# This can image can be run as (update the token value)
+# This image can be run as (update the token value)
 # docker run -p 8889:8889 -it --env QX_API_TOKEN="your_api_token" <NAME_OF_THIS_IMAGE>:TAG
 
