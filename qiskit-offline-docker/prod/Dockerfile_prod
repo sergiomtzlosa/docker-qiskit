@@ -30,8 +30,6 @@ RUN python --version && python3 --version
 RUN pip --version && pip3 --version
 RUN which pip && which pip3
 
-RUN mkdir -p notebooks
-
 RUN pip3 install pip --upgrade
 RUN pip install -r requirements.txt
 
