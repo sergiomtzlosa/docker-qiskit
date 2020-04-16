@@ -48,7 +48,8 @@ RUN pip install qiskit==0.18.0
 #RUN cd qiskit && pip install -r requirements-dev.txt && pip install -e .
 
 # FINISHING PACKAGES
-RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python tqdm pillow image scipy regex cffi qasm2image pylatexenc tikz2graphml
+RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python tqdm pillow \
+                image scipy regex cffi qasm2image pylatexenc tikz2graphml numpy ipykernel
 
 # SET ROOT PERMISSION FOR ALL USERS
 RUN chown -R $QISKIT_USER:$QISKIT_USER /home/$QISKIT_USER/
