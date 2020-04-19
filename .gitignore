@@ -6,6 +6,5 @@ qiskit-offline-docker/dev/rootfs-debian-buster.tar.xz
 notebooks/.ipynb_checkpoints
 examples/.ipynb_checkpoints
 token.txt
-notebooks/tutorials
 notebooks/tutorials/.ipynb_checkpoints
 notebooks/notebook_gates/.ipynb_checkpoints/
