@@ -51,6 +51,10 @@ RUN pip install qiskit==0.18.0
 RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python tqdm pillow \
                 image scipy regex cffi qasm2image pylatexenc tikz2graphml
 
+# Install qiskit textbook
+RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-textbook
+RUN cd qiskit-textbook && git checkout stable && pip install -r requirements.txt
+
 # SET ROOT PERMISSION FOR ALL USERS
 RUN chown -R $QISKIT_USER:$QISKIT_USER /home/$QISKIT_USER/
 RUN usermod -aG sudo $QISKIT_USER

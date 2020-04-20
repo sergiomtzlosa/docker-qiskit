@@ -3,6 +3,10 @@ qiskit-offline-docker/prod/docker-python3.8.2-buster.tar.gz
 qiskit-offline-docker/prod/rootfs-debian-buster.tar.xz
 qiskit-offline-docker/dev/docker-image-buster-slim.tar.gz
 qiskit-offline-docker/dev/rootfs-debian-buster.tar.xz
+qiskit-offline-docker/dev/notebooks/.ipynb_checkpoints
+qiskit-offline-docker/dev/examples/.ipynb_checkpoints
+qiskit-offline-docker/prod/notebooks/.ipynb_checkpoints
+qiskit-offline-docker/prod/examples/.ipynb_checkpoints
 notebooks/.ipynb_checkpoints
 examples/.ipynb_checkpoints
 token.txt
