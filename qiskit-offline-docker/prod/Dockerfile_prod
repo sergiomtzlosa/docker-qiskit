@@ -64,7 +64,7 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER $QISKIT_USER
 
 # RUN JUPYTER ON PORT 8889
-CMD [ "jupyter" , "notebook",  "--ip=0.0.0.0", "--port=8889", "--no-browser" ]
+CMD [ "jupyter" , "notebook",  "--ip=0.0.0.0", "--port=8889", "--notebook-dir=./qiskit-jupyter", "--no-browser" ]
 
 # Get the jupyter token : docker logs -f <NAME_OF_THIS_IMAGE>
 
