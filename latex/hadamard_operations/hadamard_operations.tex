@@ -5,7 +5,7 @@
 
 \newcommand{\ket}[1]{$\left|{#1}\right\rangle$} \newcommand{\bra}[1]{$\left\langle{#1}\right|$}
 \newcommand{\braket}[2]{$\left\langle{#1}\middle|{#2}\right\rangle$}
-\newcommand{\division}[2]{$\frac{#1}{#2}$}
+\newcommand{\fract}[2]{$\frac{#1}{#2}$}
 
 \begin{document}
 
@@ -13,12 +13,12 @@
 %\bra{0}
 %\braket{0}{1}
 
-\textit{H}(\ket{0}) = \division{1}{\sqrt{2}}\ket{0} + \division{1}{\sqrt{2}}\ket{1} =: \ket{+}
+\textit{H}(\ket{0}) = \fract{1}{\sqrt{2}}\ket{0} + \fract{1}{\sqrt{2}}\ket{1} =: \ket{+}
 
-\textit{H}(\ket{1}) = \division{1}{\sqrt{2}}\ket{0} - \division{1}{\sqrt{2}}\ket{1} =: \ket{-}
+\textit{H}(\ket{1}) = \fract{1}{\sqrt{2}}\ket{0} - \fract{1}{\sqrt{2}}\ket{1} =: \ket{-}
 
-\textit{H}(\division{1}{\sqrt{2}}\ket{0} + \division{1}{\sqrt{2}}\ket{1}) = \division{1}{2}(\ket{0} + \ket{1}) + \division{1}{2}(\ket{0} - \ket{1}) = \ket{0}
+\textit{H}(\fract{1}{\sqrt{2}}\ket{0} + \fract{1}{\sqrt{2}}\ket{1}) = \fract{1}{2}(\ket{0} + \ket{1}) + \fract{1}{2}(\ket{0} - \ket{1}) = \ket{0}
 
-\textit{H}(\division{1}{\sqrt{2}}\ket{0} - \division{1}{\sqrt{2}}\ket{1}) = \division{1}{2}(\ket{0} + \ket{1}) - \division{1}{2}(\ket{0} - \ket{1}) = \ket{1}
+\textit{H}(\fract{1}{\sqrt{2}}\ket{0} - \fract{1}{\sqrt{2}}\ket{1}) = \fract{1}{2}(\ket{0} + \ket{1}) - \fract{1}{2}(\ket{0} - \ket{1}) = \ket{1}
 
 \end{document}
