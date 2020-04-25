@@ -2,17 +2,29 @@
 \usepackage{babel}
 
 \usepackage[utf8]{inputenc}
+\usepackage{amsmath}
 
 \newcommand{\ket}[1]{$\left|{#1}\right\rangle$} 
 \newcommand{\bra}[1]{$\left\langle{#1}\right|$}
 \newcommand{\braket}[2]{$\left\langle{#1}\middle|{#2}\right\rangle$}
 \newcommand{\fract}[2]{$\frac{#1}{#2}$}
 
+\newcommand{\matrixbraket}[2]{
+	$\begin{pmatrix}
+		#1 \\
+		#2 \\
+	\end{pmatrix}$
+}
+
 \begin{document}
 
 %\ket{1}
 %\bra{0}
 %\braket{0}{1}
+
+\ket{0} = \matrixbraket{1}{0}
+	
+\ket{1} = \matrixbraket{0}{1}
 
 \textit{H}(\ket{0}) = \fract{1}{\sqrt{2}}\ket{0} + \fract{1}{\sqrt{2}}\ket{1} =: \ket{+}
 
