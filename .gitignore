@@ -18,6 +18,9 @@ qiskit-offline-docker/prod/qiskit-jupyter/notebooks/.ipynb_checkpoints
 qiskit-offline-docker/prod/qiskit-jupyter/notebooks/quantum_gates/imgs/.ipynb_checkpoints
 qiskit-offline-docker/prod/qiskit-jupyter/notebooks/quantum_gates/.ipynb_checkpoints
 qiskit-offline-docker/prod/qiskit-jupyter/examples/.ipynb_checkpoints
+qiskit-offline-docker/prod/qiskit-jupyter/.ipynb_checkpoints
+qiskit-offline-docker/dev/qiskit-jupyter/.ipynb_checkpoints
+qiskit-jupyter/.ipynb_checkpoints
 token.txt
 latex/hadamard_operations/*.log
 latex/hadamard_operations/*.synctex.gz

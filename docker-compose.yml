@@ -14,8 +14,7 @@ services:
       - TZ=Europe/London
       - JUPYTER_ENABLE_LAB=yes
     volumes:
-      - ./qiskit-jupyter/notebooks:/home/qiskit/qiskit-jupyter/notebooks
-      - ./qiskit-jupyter/examples:/home/qiskit/qiskit-jupyter/examples
+      - ./qiskit-jupyter:/home/qiskit/qiskit-jupyter
     ports:
       - 8889:8889
     restart: unless-stopped
