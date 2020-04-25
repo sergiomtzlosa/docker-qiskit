@@ -13,6 +13,7 @@ This is a docker image with Qiskit 0.18.0 including:
 - Qiskit Ignis 0.3.0
 - Qiskit Aqua 0.6.5
 - Qiskit IBMQ Provider 0.6.0
+- Qiskit Textbook
 
 It also has keras, matplotlib, pandas, seaborn, scikit-learn, opencv-python, tqdm, pillow, image, scipy and regex.
 
