@@ -1,4 +1,5 @@
 .DS_Store
 docker-image-buster-slim.tar.gz
+rootfs-debian-buster.tar.xz 
 notebooks/.ipynb_checkpoints
 examples/.ipynb_checkpoints
