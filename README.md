@@ -28,12 +28,6 @@ sudo apt-get install debootstrap
 sudo debootstrap buster buster http://deb.debian.org/debian && sudo tar -f rootfs-debian-buster.tar.xz -C buster -c .
 ```
 
-or one-shot command:
-
-```
-sudo debootstrap --no-check-gpg --make-tarball=rootfs-debian-buster.tar.xz buster buster http://deb.debian.org/debian
-```
-
 On both Dockerfiles (dev and prod), you can set your QISKIT IBM API Key on QISKIT_API_TOKEN variable (OPTIONAL).
 
 Run the image with docker-compose command:
