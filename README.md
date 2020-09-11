@@ -53,3 +53,5 @@ Pull the image from docker hub:
 ```
 docker pull sergiomtzlosa/qiskit:latest
 ```
+
+The Dockerfile_dev file compiles QISKIT from source code, then it can be used to deploy future releases.
