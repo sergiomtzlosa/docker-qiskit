@@ -51,7 +51,13 @@ https://hub.docker.com/repository/docker/sergiomtzlosa/qiskit
 Pull the image from docker hub:
 
 ```
-docker pull sergiomtzlosa/qiskit:latest
+docker pull sergiomtzlosa/qiskit:qiskit-0.23.0
 ```
 
 The Dockerfile_dev file compiles QISKIT from source code, then it can be used to deploy future releases.
+
+Qiskit 0.18.0 is still available:
+
+```
+docker pull sergiomtzlosa/qiskit:latest
+```
