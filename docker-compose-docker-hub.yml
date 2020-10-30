@@ -1,0 +1,16 @@
+version: "2"
+services:
+  qiskit-service:
+    image: sergiomtzlosa/qiskit:qiskit-0.23.0
+    container_name: qiskit-container
+    environment:
+#      - QISKIT_USER=
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./qiskit-jupyter:/home/qiskit/qiskit-jupyter
+    ports:
+      - 8889:8889
+    restart: unless-stopped
