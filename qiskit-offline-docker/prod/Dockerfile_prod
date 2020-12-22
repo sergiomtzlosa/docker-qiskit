@@ -51,7 +51,7 @@ RUN pip install -r requirements.txt
 RUN pip install qiskit==$QISKIT_RELEASE
 
 # OPTION 2: INSTALL EACH COMPONENT FROM PIP (easy way) STABLE
-#RUN pip install qiskit-terra==$QISKIT_TERRA_RELEASE qiskit-aer==$QISKIT_AER_RELEASE qiskit-ignis==$QISKIT_IGNIS_RELEASE qiskit-ibmq-provider=$QISKIT_IBMQ_RELEASE qiskit-aqua==$QISKIT_A>
+#RUN pip install qiskit-terra==$QISKIT_TERRA_RELEASE qiskit-aer==$QISKIT_AER_RELEASE qiskit-ignis==$QISKIT_IGNIS_RELEASE qiskit-ibmq-provider=$QISKIT_IBMQ_RELEASE qiskit-aqua==$QISKIT_AQUA_RELEASE
 
 # OPTION 3: INSTALL QISKIT FROM SOURCE (easy way) STABLE
 #RUN pip install tox
