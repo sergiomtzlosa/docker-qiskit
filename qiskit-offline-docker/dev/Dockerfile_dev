@@ -22,7 +22,8 @@ RUN apt-get install -y build-essential poppler-utils texlive-latex-base texlive-
 
 WORKDIR $QISKIT_DIR
 
-RUN pip3 install pip --upgrade
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+RUN pip3 install pip==20.3.1
 RUN pip install -r requirements.txt
 
 # INSTALL EACH COMPONENT OF QISKIT FROM SOOURCE ONE BY ONE, developers ONLY!!!! (Advanced) UNSTABLE
@@ -45,7 +46,7 @@ RUN cd qiskit-aqua && pip install -r requirements-dev.txt && pip install -e .
 
 # FINISHING PACKAGES
 RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python tqdm pillow \
-                image scipy regex cffi qasm2image pylatexenc tikz2graphml plotly==4.14.1 kaleidoscope
+                image scipy regex cffi qasm2image pylatexenc tikz2graphml kaleidoscope plotly==4.14.1 --use-deprecated=legacy-resolver
 
 # Install qiskit textbook
 RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-textbook
