@@ -61,3 +61,29 @@ Qiskit 0.18.0 is still available:
 ```
 docker pull sergiomtzlosa/qiskit:latest
 ```
+Use the docker-compose-yml file to start the image:
+
+```
+version: "2"
+services:
+  qiskit-service-0.23.0:
+    image: sergiomtzlosa/qiskit:latest
+    container_name: qiskit-container-0.23.0
+    environment:
+#      - QISKIT_USER=
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./qiskit-jupyter:/home/qiskit/qiskit-jupyter
+    ports:
+      - 8889:8889
+    restart: unless-stopped
+```
+
+From your terminal use the docker-compose.yml file:
+
+```
+docker-compose up -d
+```
