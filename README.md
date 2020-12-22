@@ -56,11 +56,6 @@ docker pull sergiomtzlosa/qiskit:qiskit-0.23.0
 
 The Dockerfile_dev file compiles QISKIT from source code, then it can be used to deploy future releases.
 
-Qiskit 0.18.0 is still available:
-
-```
-docker pull sergiomtzlosa/qiskit:latest
-```
 Use the docker-compose-yml file to start the image:
 
 ```
