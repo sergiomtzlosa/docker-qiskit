@@ -45,7 +45,7 @@ RUN cd qiskit-aqua && pip install -r requirements-dev.txt && pip install -e .
 
 # FINISHING PACKAGES
 RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python tqdm pillow \
-                image scipy regex cffi qasm2image pylatexenc tikz2graphml
+                image scipy regex cffi qasm2image pylatexenc tikz2graphml plotly==4.14.1 kaleidoscope
 
 # Install qiskit textbook
 RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-textbook
