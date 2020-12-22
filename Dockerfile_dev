@@ -1,6 +1,8 @@
 FROM debian:buster-slim
 MAINTAINER Sergio Martinez-Losa
 
+ENV DEBIAN_FRONTEND noninteractive
+
 ENV QISKIT_USER=qiskit
 
 # Optional: set your IBM QISKIT API TOKEN HERE

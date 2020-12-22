@@ -1,8 +1,8 @@
 version: "2"
 services:
-  qiskit-service:
-    image: qiskit
-    container_name: qiskit-container
+  qiskit-service-0.23.0:
+    image: qiskit-0.23.0
+    container_name: qiskit-container-0.23.0
     build:
       context: ./
       dockerfile: ./Dockerfile_prod # production environment

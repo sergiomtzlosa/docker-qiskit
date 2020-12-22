@@ -1,10 +1,20 @@
 FROM python:3.8.2-buster
 MAINTAINER Sergio Martinez-Losa
 
-ENV QISKIT_USER=qiskit
+ENV DEBIAN_FRONTEND noninteractive
 
 # Optional: set your IBM QISKIT API TOKEN HERE
 #ENV QISKIT_API_TOKEN="UPDATE_THIS_API_TOKEN"
+
+# ROLL YOUR VERSION HERE
+ENV QISKIT_RELEASE=0.23.0
+ENV QISKIT_TERRA_RELEASE=0.16.0
+ENV QISKIT_AER_RELEASE=0.7.0
+ENV QISKIT_IGNIS_RELEASE=0.5.0
+ENV QISKIT_IBMQ_RELEASE=0.11.0
+ENV QISKIT_AQUA_RELEASE=0.8.0
+
+ENV QISKIT_USER=qiskit
 
 # CREATE NEW USER
 RUN useradd --create-home -s /bin/bash $QISKIT_USER
@@ -28,14 +38,14 @@ RUN pip install -r requirements.txt
 # There are 3 ways to install QISKIT, listed below (default option 1)
 
 # OPTION 1: INSTALL QISKIT FROM PIP (easy way) STABLE
-RUN pip install qiskit==0.18.0
+RUN pip install qiskit==$QISKIT_RELEASE
 
 # OPTION 2: INSTALL EACH COMPONENT FROM PIP (easy way) STABLE
-#RUN pip install qiskit-terra==0.13.0 qiskit-aer==0.5.0 qiskit-ignis==0.3.0 qiskit-ibmq-provider==0.6.0 qiskit-aqua==0.6.5
+#RUN pip install qiskit-terra==$QISKIT_TERRA_RELEASE qiskit-aer==$QISKIT_AER_RELEASE qiskit-ignis==$QISKIT_IGNIS_RELEASE qiskit-ibmq-provider=$QISKIT_IBMQ_RELEASE qiskit-aqua==$QISKIT_AQUA_RELEASE
 
 # OPTION 3: INSTALL QISKIT FROM SOURCE (easy way) STABLE
 #RUN pip install tox
-#RUN cd $QISKIT_DIR && wget https://github.com/Qiskit/qiskit/archive/0.18.0.zip && unzip 0.18.0.zip && mv qiskit-0.18.0 qiskit
+#RUN cd $QISKIT_DIR && wget https://github.com/Qiskit/qiskit/archive/$QISKIT_RELEASE.zip && unzip $QISKIT_RELEASE.zip && mv $QISKIT_RELEASE qiskit
 #RUN cd qiskit && pip install -r requirements-dev.txt && pip install -e .
 
 # FINISHING PACKAGES
