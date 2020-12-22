@@ -26,3 +26,5 @@ latex/hadamard_operations/*.log
 latex/hadamard_operations/*.synctex.gz
 latex/hadamard_operations/*.aux
 qiskit-jupyter/notebooks/tutorials/more_tutorials/.ipynb_checkpoints/
+qiskit-0.18.0.zip
+qiskit-jupyter/quantum_challenge_2020

@@ -3,10 +3,20 @@ MAINTAINER Sergio Martinez-Losa
 
 ADD rootfs-debian-buster.tar.xz /
 
-ENV QISKIT_USER=qiskit
+ENV DEBIAN_FRONTEND noninteractive
 
 # Optional: set your IBM QISKIT API TOKEN HERE
 #ENV QISKIT_API_TOKEN="UPDATE_THIS_API_TOKEN"
+
+# ROLL YOUR VERSION HERE
+ENV QISKIT_RELEASE=0.23.0
+ENV QISKIT_TERRA_RELEASE=0.16.0
+ENV QISKIT_AER_RELEASE=0.7.0
+ENV QISKIT_IGNIS_RELEASE=0.5.0
+ENV QISKIT_IBMQ_RELEASE=0.11.0
+ENV QISKIT_AQUA_RELEASE=0.8.0
+
+ENV QISKIT_USER=qiskit
 
 # CREATE NEW USER
 RUN useradd --create-home -s /bin/bash $QISKIT_USER
@@ -30,26 +40,27 @@ RUN python --version && python3 --version
 RUN pip --version && pip3 --version
 RUN which pip && which pip3
 
-RUN pip3 install pip --upgrade
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+RUN pip3 install pip==20.3.1
 RUN pip install -r requirements.txt
 
 # Release versions: https://qiskit.org/documentation/release_notes.html
 # There are 3 ways to install QISKIT, listed below (default option 1)
 
 # OPTION 1: INSTALL QISKIT FROM PIP (easy way) STABLE
-RUN pip install qiskit==0.23.0
+RUN pip install qiskit==$QISKIT_RELEASE
 
 # OPTION 2: INSTALL EACH COMPONENT FROM PIP (easy way) STABLE
-#RUN pip install qiskit-terra==0.16.0 qiskit-aer==0.7.0 qiskit-ignis==0.5.0 qiskit-ibmq-provider==0.11.0 qiskit-aqua==0.8.0
+#RUN pip install qiskit-terra==$QISKIT_TERRA_RELEASE qiskit-aer==$QISKIT_AER_RELEASE qiskit-ignis==$QISKIT_IGNIS_RELEASE qiskit-ibmq-provider=$QISKIT_IBMQ_RELEASE qiskit-aqua==$QISKIT_A>
 
 # OPTION 3: INSTALL QISKIT FROM SOURCE (easy way) STABLE
 #RUN pip install tox
-#RUN cd $QISKIT_DIR && wget https://github.com/Qiskit/qiskit/archive/0.23.0.zip && unzip 0.23.0.zip && mv qiskit-0.23.0 qiskit
+#RUN cd $QISKIT_DIR && wget https://github.com/Qiskit/qiskit/archive/$QISKIT_RELEASE.zip && unzip $QISKIT_RELEASE.zip && mv $QISKIT_RELEASE qiskit
 #RUN cd qiskit && pip install -r requirements-dev.txt && pip install -e .
 
 # FINISHING PACKAGES
 RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python tqdm pillow \
-                image scipy regex cffi qasm2image pylatexenc tikz2graphml
+                image scipy regex cffi qasm2image pylatexenc tikz2graphml kaleidoscope plotly==4.14.1 --use-deprecated=legacy-resolver
 
 # Install qiskit textbook
 RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-textbook

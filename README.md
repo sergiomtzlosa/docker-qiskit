@@ -15,7 +15,7 @@ This is a docker image with Qiskit 0.23.0 including:
 - Qiskit IBMQ Provider 0.11.0
 - Qiskit Textbook
 
-It also has keras, matplotlib, pandas, seaborn, scikit-learn, opencv-python, tqdm, pillow, image, scipy and regex.
+It also has keras, matplotlib, pandas, seaborn, scikit-learn, opencv-python, tqdm, pillow, image, scipy, regex and kaleidoscope.
 
 There are two environments: development and production (default)
 
