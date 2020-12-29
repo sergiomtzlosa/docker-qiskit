@@ -65,7 +65,7 @@ services:
     image: sergiomtzlosa/qiskit:latest
     container_name: qiskit-container-0.23.0
     environment:
-#      - QISKIT_USER=
+#      - QISKIT_API_TOKEN=
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London

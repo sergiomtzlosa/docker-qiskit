@@ -8,7 +8,7 @@ services:
       dockerfile: ./Dockerfile_prod # production environment
 #      dockerfile: ./Dockerfile_dev # development environment
     environment:
-#      - QISKIT_USER=
+#      - QISKIT_API_TOKEN=
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
