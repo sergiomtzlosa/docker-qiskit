@@ -46,7 +46,7 @@ docker-compose logs -f qiskit-service
 
 Default image on docker hub is production environment:
 
-https://hub.docker.com/repository/docker/sergiomtzlosa/qiskit
+https://hub.docker.com/r/sergiomtzlosa/qiskit
 
 Pull the image from docker hub:
 
