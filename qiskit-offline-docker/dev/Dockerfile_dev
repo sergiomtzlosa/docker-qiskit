@@ -58,7 +58,7 @@ RUN cd qiskit-textbook && git checkout stable && pip install -r requirements.txt
 RUN python3 -m pip install pennylane --upgrade && \
     python3 -m pip install pennylane-forest pennylane-qiskit pennylane-sf pennylane-qsharp \
                            pennylane-cirq pennylane-honeywell amazon-braket-pennylane-plugin qulacs pennylane-qulacs \
-                           pennylane-orquestra pennylane-aqt pennylane_pq
+                           pennylane-orquestra pennylane-aqt pennylane_pq qsimcirq
 
 # SET ROOT PERMISSION FOR ALL USERS
 RUN chown -R $QISKIT_USER:$QISKIT_USER /home/$QISKIT_USER/
