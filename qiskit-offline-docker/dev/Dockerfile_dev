@@ -54,8 +54,11 @@ RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python 
 RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-textbook
 RUN cd qiskit-textbook && git checkout stable && pip install -r requirements.txt
 
+# Optional, install pennylane QML
 RUN python3 -m pip install pennylane --upgrade && \
-    python3 -m pip install pennylane-forest pennylane-qiskit pennylane-sf pennylane-qsharp
+    python3 -m pip install pennylane-forest pennylane-qiskit pennylane-sf pennylane-qsharp \
+                           pennylane-cirq pennylane-honeywell amazon-braket-pennylane-plugin qulacs pennylane-qulacs \
+                           pennylane-orquestra pennylane-aqt pennylane_pq
 
 # SET ROOT PERMISSION FOR ALL USERS
 RUN chown -R $QISKIT_USER:$QISKIT_USER /home/$QISKIT_USER/
