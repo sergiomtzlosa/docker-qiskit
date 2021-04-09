@@ -66,7 +66,7 @@ Use the docker-compose.yml file to start the image:
 version: "2"
 services:
   qiskit-service-0.25.0:
-    image: sergiomtzlosa/qiskit:latest
+    image: sergiomtzlosa/qiskit:qiskit-0.25.0
     container_name: qiskit-container-0.25.0
     environment:
 #      - QISKIT_API_TOKEN=
