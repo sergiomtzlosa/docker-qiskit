@@ -66,7 +66,7 @@ RUN cd qiskit-machine-learning && pip install -r requirements-dev.txt && pip ins
 
 # FINISHING PACKAGES
 RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python tqdm pillow pennylane pennylane-qiskit \
-                image scipy regex cffi qasm2image pylatexenc tikz2graphml kaleidoscope plotly==4.14.1 --use-deprecated=legacy-resolver
+                image scipy regex cffi qasm2image pylatexenc tikz2graphml kaleidoscope plotly==4.14.1 jupyterlab --use-deprecated=legacy-resolver
 
 # Install qiskit textbook
 RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-textbook

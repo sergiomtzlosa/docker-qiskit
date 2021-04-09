@@ -8,7 +8,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
-      - JUPYTER_ENABLE_LAB=yes
     volumes:
       - ./qiskit-jupyter:/home/qiskit/qiskit-jupyter
     ports:
