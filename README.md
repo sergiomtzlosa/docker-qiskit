@@ -43,7 +43,7 @@ docker-compose up
 Inspect logs from service to get the jupyter token:
 
 ```
-docker-compose logs -f qiskit-service
+docker-compose logs -f <CONTAINER_ID>
 ```
 
 **This image exposes the jupyter notebook on port 8889: http://YOUR_IP:8889**
