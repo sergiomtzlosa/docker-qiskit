@@ -1,7 +1,7 @@
 version: "2"
 services:
   qiskit-service:
-    image: sergiomtzlosa/qiskit:qiskit-0.23.0
+    image: sergiomtzlosa/qiskit:qiskit-0.25.0
     container_name: qiskit-container
     environment:
 #      - QISKIT_API_TOKEN=

@@ -1,4 +1,4 @@
-# QISKIT 0.23.0 release on Docker
+# QISKIT 0.25.0 release on Docker
 
 <p align="center">
 <img src="https://github.com/sergiomtzlosa/docker-qiskit/blob/master/qubits.png?raw=true">
@@ -6,7 +6,7 @@
 
 Qiskit is an open-source framework for quantum computing. It provides tools for creating and manipulating quantum programs and running them on prototype quantum devices on IBM Q Experience or on simulators on a local computer.
 
-This is a docker image with Qiskit 0.23.0 including:
+This is a docker image with Qiskit 0.25.0 including:
 
 - Qiskit Terra 0.16.0
 - Qiskit Aer 0.7.0
@@ -14,6 +14,10 @@ This is a docker image with Qiskit 0.23.0 including:
 - Qiskit Aqua 0.8.0
 - Qiskit IBMQ Provider 0.11.0
 - Qiskit Textbook
+- Qiskit nature 0.1.0
+- Qiskit Optimization 0.1.0
+- Qiskit Finance 0.1.0
+- Qiskit Machine Learning 0.1.0
 
 It also has keras, matplotlib, pandas, seaborn, scikit-learn, opencv-python, tqdm, pillow, image, scipy, regex and kaleidoscope.
 
@@ -51,7 +55,7 @@ https://hub.docker.com/r/sergiomtzlosa/qiskit
 Pull the image from docker hub:
 
 ```
-docker pull sergiomtzlosa/qiskit:qiskit-0.23.0
+docker pull sergiomtzlosa/qiskit:qiskit-0.25.0
 ```
 
 The Dockerfile_dev file compiles QISKIT from source code, then it can be used to deploy future releases.
@@ -61,9 +65,9 @@ Use the docker-compose.yml file to start the image:
 ```
 version: "2"
 services:
-  qiskit-service-0.23.0:
+  qiskit-service-0.25.0:
     image: sergiomtzlosa/qiskit:latest
-    container_name: qiskit-container-0.23.0
+    container_name: qiskit-container-0.25.0
     environment:
 #      - QISKIT_API_TOKEN=
       - PUID=1000
