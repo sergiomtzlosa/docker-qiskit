@@ -64,30 +64,30 @@ def get_new_versions():
 
     return versions_array
 
-def replace_version_docker_file(file_name):
+def replace_version_docker_file(release_versions, file_name):
 
-    main_contents = open_file(file_name)
-    new_versions = get_new_versions()
-    new_contens = replace_dockerfile_versions(new_versions, main_contents)
+    dockerfile_contents = open_file(file_name)
+    new_contens = replace_dockerfile_versions(release_versions, dockerfile_contents)
 
     return new_contens
 
-def replace_version_composer_file(file_name):
+def replace_version_composer_file(release_versions, file_name):
 
     compose_contents = open_file(file_name)
-    new_versions = get_new_versions()
-    new_contens = replace_compose_versions(new_versions[0], compose_contents)
+    new_contens = replace_compose_versions(release_versions[0], compose_contents)
 
     return new_contens
 
+new_versions = get_new_versions()
+
 replace_file = "Dockerfile_prod"
-new_contents = replace_version_docker_file(replace_file)
+new_contents = replace_version_docker_file(new_versions, replace_file)
 
 replace_file_offine = "./qiskit-offline-docker/prod/Dockerfile_prod"
-new_contents_offline = replace_version_docker_file(replace_file_offine)
+new_contents_offline = replace_version_docker_file(new_versions, replace_file_offine)
 
 replace_compose = "docker-compose.yml"
-new_composer = replace_version_composer_file(replace_compose)
+new_composer = replace_version_composer_file(new_versions, replace_compose)
 
 #print(new_composer)
 
