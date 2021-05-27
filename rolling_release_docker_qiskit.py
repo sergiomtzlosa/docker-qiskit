@@ -14,7 +14,7 @@ def open_file(file_path):
 
     return contents
 
-def replace_versions(versions, file_contents):
+def replace_dockerfile_versions(versions, file_contents):
 
     if len(versions) != 10:
         return file_contents
@@ -29,6 +29,17 @@ def replace_versions(versions, file_contents):
     file_contents = re.sub(r"(?<=QISKIT_ML_RELEASE=).*", versions[7], file_contents)
     file_contents = re.sub(r"(?<=QISKIT_OPTIMIZATION_RELEASE=).*", versions[8], file_contents)
     file_contents = re.sub(r"(?<=QISKIT_FINANCE_RELEASE=).*", versions[9], file_contents)
+
+    return file_contents
+
+def replace_compose_versions(new_release, file_contents):
+
+    if not new_release:
+        return file_contents
+
+    file_contents = re.sub(r"(?<=qiskit-service-).*", new_release, file_contents)
+    file_contents = re.sub(r"(?<=image: qiskit-).*", new_release, file_contents)
+    file_contents = re.sub(r"(?<=qiskit-container-).*", new_release, file_contents)
 
     return file_contents
 
@@ -53,24 +64,35 @@ def get_new_versions():
 
     return versions_array
 
-def replace_version_file(file_name):
+def replace_version_docker_file(file_name):
 
     main_contents = open_file(file_name)
     new_versions = get_new_versions()
-    new_contens = replace_versions(new_versions, main_contents)
+    new_contens = replace_dockerfile_versions(new_versions, main_contents)
+
+    return new_contens
+
+def replace_version_composer_file(file_name):
+
+    compose_contents = open_file(file_name)
+    new_versions = get_new_versions()
+    new_contens = replace_compose_versions(new_versions[0], compose_contents)
 
     return new_contens
 
 replace_file = "Dockerfile_prod"
-new_contents = replace_version_file(replace_file)
+new_contents = replace_version_docker_file(replace_file)
 
 replace_file_offine = "./qiskit-offline-docker/prod/Dockerfile_prod"
-new_contents_offline = replace_version_file(replace_file_offine)
+new_contents_offline = replace_version_docker_file(replace_file_offine)
 
-#print(new_contents)
+replace_compose = "docker-compose.yml"
+new_composer = replace_version_composer_file(replace_compose)
+
+#print(new_composer)
 
 write_docker_file(replace_file, new_contents)
 write_docker_file(replace_file_offine, new_contents_offline)
+write_docker_file(replace_compose, new_composer)
 
-print("Dockerfile QISKIT release updated!")
-
+print("Dockerfile QISKIT release files updated!")
