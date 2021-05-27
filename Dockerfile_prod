@@ -70,6 +70,8 @@ RUN pip install qiskit==$QISKIT_RELEASE qiskit-machine-learning==$QISKIT_ML_RELE
 #RUN cd $QISKIT_DIR && wget https://github.com/Qiskit/qiskit-machine-learning/archive/$QISKIT_ML_RELEASE.zip && unzip $QISKIT_ML_RELEASE.zip && mv $QISKIT_ML_RELEASE qiskit-ml && \
 #    cd qiskit-ml && pip install -r requirements-dev.txt && pip install -e .
 
+RUN pip install -I git+https://github.com/qiskit-community/Quantum-Challenge-Grader.git
+
 # FINISHING PACKAGES
 RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python tqdm pillow pennylane pennylane-qiskit \
                 image scipy regex cffi qasm2image pylatexenc tikz2graphml kaleidoscope plotly==4.14.1 jupyterlab --use-deprecated=legacy-resolver

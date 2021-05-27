@@ -59,6 +59,8 @@ RUN pip install qiskit-machine-learning[torch]
 RUN cd $QISKIT_DIR && git clone https://github.com/Qiskit/qiskit-machine-learning.git
 RUN cd qiskit-machine-learning && pip install -r requirements-dev.txt && pip install -e .
 
+RUN pip install -I git+https://github.com/qiskit-community/Quantum-Challenge-Grader.git
+
 # FINISHING PACKAGES
 RUN pip install keras pandas xlrd seaborn scikit-learn matplotlib opencv-python tqdm pillow pennylane pennylane-qiskit \
                 image scipy regex cffi qasm2image pylatexenc tikz2graphml kaleidoscope plotly==4.14.1 jupyterlab --use-deprecated=legacy-resolver
