@@ -1,6 +1,6 @@
 version: "2"
 services:
-  qiskit-service-0.26.2
+  qiskit-service-0.26.2:
     image: qiskit-0.26.2
     container_name: qiskit-container-0.26.2
     build:
