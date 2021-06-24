@@ -2,6 +2,12 @@ from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, Aer, exec
 from qiskit.quantum_info import Statevector
 import numpy as np
 
+def invert_array(obj_array):
+    
+    temp_array = np.array(obj_array)
+    
+    return np.invert(temp_array)
+
 def get_quantum_simulator_backend(str_backend):
   
     return Aer.get_backend(str_backend)
