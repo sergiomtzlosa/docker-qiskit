@@ -9,6 +9,10 @@ def show_image(img_array):
     plt.imshow(img_array, cmap=plt.cm.gray, interpolation="nearest")
     plt.show()
     
+def save_image_file(filename, data):
+    
+    return plt.imsave(filename, np.invert(data), cmap='binary')
+    
 def convert_to_bw(image_path):
     
     img_grey = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
