@@ -42,3 +42,7 @@ qiskit-jupyter/advocate-test-20200715-1
 qiskit-jupyter/notebooks/quantum-drawing/.ipynb_checkpoints
 qiskit-jupyter/notebooks/quantum-drawing/__pycache__
 qiskit-jupyter/qss-2021
+qiskit-jupyter/notebooks/quantum-drawing/test_qmad.ipynb
+qiskit-jupyter/notebooks/quantum-drawing/quantum_zueco_singular.csv
+qiskit-jupyter/notebooks/quantum-drawing/dr_david_zueco.png
+qiskit-jupyter/notebooks/quantum-drawing/quantum-zueco-sim.png

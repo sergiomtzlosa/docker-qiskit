@@ -9,6 +9,9 @@ def show_image(img_array):
     plt.imshow(img_array, cmap=plt.cm.gray, interpolation="nearest")
     plt.show()
     
+def save_image_to_jpg(image, file_name):
+    image.save(file_name)
+    
 def invert_data(data):
     return np.invert(data);
 
