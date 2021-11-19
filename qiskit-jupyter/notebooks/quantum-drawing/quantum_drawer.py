@@ -119,7 +119,9 @@ def rebuild_image_quantum(binary_data, cols_items, splitting, num_qubits, backen
     
     return rework_data
 
-def rebuild_image_quantum_enhance(binary_data, cols_items, splitting, num_qubits, backend, num_shots=1):
+def rebuild_image_quantum_enhance(binary_data, splitting, num_qubits, backend, num_shots=1):
+    
+    cols_items = binary_data.shape[1]
     
     final_array = []
 
