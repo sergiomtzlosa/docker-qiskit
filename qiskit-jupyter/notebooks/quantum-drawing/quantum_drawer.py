@@ -197,7 +197,7 @@ def rebuild_image_quantum_enhance_onerun(binary_data, splitting, num_qubits, bac
 
             step = step + num_qubits
 
-    sim_counts_temp = execute(circuits_list, backend=backend, shots=1).result().get_counts()
+    sim_counts_temp = execute(circuits_list, backend=backend, shots=num_shots).result().get_counts()
 
     sim_counts = []
 
