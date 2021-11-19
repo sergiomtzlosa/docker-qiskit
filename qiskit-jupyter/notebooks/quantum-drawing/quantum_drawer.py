@@ -118,3 +118,115 @@ def rebuild_image_quantum(binary_data, cols_items, splitting, num_qubits, backen
     rework_data = np.array(final_array, dtype='uint8')
     
     return rework_data
+
+def rebuild_image_quantum_enhance(binary_data, cols_items, splitting, num_qubits, backend, num_shots=1):
+    
+    final_array = []
+
+    for item in binary_data:
+
+        row_value = ''
+
+        step = 0
+
+        circ_copy = create_circuits(splitting, num_qubits)
+        
+        circuits_list = []
+        
+        for circuit in circ_copy: 
+
+            temp_step = step + num_qubits
+            long_step = temp_step
+
+            if long_step >= cols_items:
+                long_step = cols_items
+
+            chunk = item[step:long_step]
+
+            apply_gate(circuit, chunk, num_qubits)
+
+            circuits_list.append(circuit)
+
+            step = step + num_qubits
+
+        sim_counts_temp = execute(circuits_list, backend=backend, shots=num_shots).result().get_counts()
+   
+        for item in sim_counts_temp:
+        
+            row_value = row_value + rework_result_count(item) 
+    
+        if len(row_value) >= cols_items:
+            
+            diff = len(row_value) - cols_items
+            
+            row_value = row_value[:-diff]
+            
+        array_row = split_str(row_value)
+
+        final_array.append(array_row)
+
+    rework_data = np.array(final_array, dtype='uint8')
+    
+    return rework_data
+
+def rebuild_image_quantum_enhance_onerun(binary_data, splitting, num_qubits, backend, num_shots=1):
+    
+    cols_items = binary_data.shape[1]
+
+    circuits_list = []
+
+    for item in binary_data:
+
+        step = 0
+
+        circ_copy = create_circuits(splitting, num_qubits)
+
+        for circuit in circ_copy: 
+
+            temp_step = step + num_qubits
+            long_step = temp_step
+
+            if long_step >= cols_items:
+                long_step = cols_items
+
+            chunk = item[step:long_step]
+
+            apply_gate(circuit, chunk, num_qubits)
+
+            circuits_list.append(circuit)
+
+            step = step + num_qubits
+
+    sim_counts_temp = execute(circuits_list, backend=backend, shots=1).result().get_counts()
+
+    sim_counts = []
+
+    for i in range(0, len(sim_counts_temp), splitting):
+
+        key = sim_counts_temp[i:i + splitting]
+
+        sim_counts.append(key)
+
+    final_array = []
+
+    for elem in sim_counts:
+
+        row_value = ''
+
+        for item in elem:
+
+            row_value = row_value + rework_result_count(item) 
+
+            if len(row_value) >= cols_items:
+
+                diff = len(row_value) - cols_items
+
+                row_value = row_value[:-diff]
+
+            array_row = split_str(row_value)
+
+        final_array.append(array_row)
+
+    rework_data = np.array(final_array, dtype='uint8')
+    
+    return rework_data
