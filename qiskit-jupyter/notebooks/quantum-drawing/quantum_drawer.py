@@ -68,6 +68,17 @@ def apply_gate(circuit, row, num_qubits):
     else:
         circuit.id(list(range(num_qubits)))
         
+    #i = 0
+    
+    #for ch in row:
+    #    
+    #    if int(ch) == 0:
+    #        circuit.x(i)
+    #    else:
+    #        circuit.id(i)
+    #        
+    #    i = i + 1
+            
     circuit.measure(range(num_qubits), range(num_qubits))
     
     return circuit
@@ -204,7 +215,7 @@ def rebuild_image_quantum_enhance_onerun(binary_data, splitting, num_qubits, bac
     if backend.configuration().simulator:
         
         sim_counts_temp = execute(circuits_list, backend=backend, shots=num_shots).result().get_counts()
-        
+ 
     else:
     
         chunk_size = backend.configuration().max_experiments
@@ -214,12 +225,14 @@ def rebuild_image_quantum_enhance_onerun(binary_data, splitting, num_qubits, bac
             chunked_list = [circuits_list[i:i+chunk_size] for i in range(0, len(circuits_list), chunk_size)]
 
             for circ_list in chunked_list:
+                
                 sim_res_chunked = execute(circ_list, backend=backend, shots=num_shots).result().get_counts()
+
                 sim_counts_temp.extend(sim_res_chunked)
                 
         else:
             sim_counts_temp = execute(circuits_list, backend=backend, shots=num_shots).result().get_counts()
-
+                    
     sim_counts = []
 
     for i in range(0, len(sim_counts_temp), splitting):
@@ -231,9 +244,9 @@ def rebuild_image_quantum_enhance_onerun(binary_data, splitting, num_qubits, bac
     final_array = []
 
     for elem in sim_counts:
-
+    
         row_value = ''
-
+        
         for item in elem:
 
             row_value = row_value + rework_result_count(item) 
