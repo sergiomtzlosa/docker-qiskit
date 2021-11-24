@@ -2,6 +2,16 @@ from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, Aer, exec
 from qiskit.quantum_info import Statevector
 import numpy as np
 
+def estimate_sent_jobs(rows, columns, num_qubits, max_experiments_backend):
+       
+    chunks_cols = int(columns / num_qubits) + (0 if columns % num_qubits == 0 else 1)
+    
+    all_circuits = chunks_cols * rows
+    
+    num_jobs = int(all_circuits / max_experiments_backend) + (0 if all_circuits % max_experiments_backend == 0 else 1)
+    
+    return num_jobs
+    
 def invert_array(obj_array):
     
     temp_array = np.array(obj_array)
