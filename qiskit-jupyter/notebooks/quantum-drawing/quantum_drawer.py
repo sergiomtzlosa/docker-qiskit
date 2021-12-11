@@ -239,12 +239,21 @@ def rebuild_image_quantum_enhance_onerun(binary_data, splitting, num_qubits, bac
             
             for circ_list in chunked_list:
                 
-                sim_res_chunked = execute(circ_list, backend=backend, shots=num_shots).result().get_counts()
+                job = execute(circ_list, backend=backend, shots=num_shots)
+                
+                print("job ID: ", job.job_id())
+                
+                sim_res_chunked = job.result().get_counts()
 
                 sim_counts_temp.extend(sim_res_chunked)
                 
         else:
-            sim_counts_temp = execute(circuits_list, backend=backend, shots=num_shots).result().get_counts()
+            
+            job = execute(circuits_list, backend=backend, shots=num_shots)
+            
+            print("job ID: ", job.job_id())
+            
+            sim_counts_temp = job.result().get_counts()
             
             print("Sending 1 job(s) to Quantum Computer...")
                     
