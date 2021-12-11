@@ -288,3 +288,50 @@ def rebuild_image_quantum_enhance_onerun(binary_data, splitting, num_qubits, bac
     rework_data = np.array(final_array, dtype='uint8')
     
     return rework_data
+
+def recover_image_jobs(jobs, backend, splitting, cols_items):
+
+    sim_counts_temp = []
+    
+    for job_id in jobs:
+                        
+        #print("job ID: ", job_id)
+
+        job = backend.retrieve_job(job_id)
+        
+        sim_res_chunked = job.result().get_counts()
+
+        #print(sim_res_chunked)
+        sim_counts_temp.extend(sim_res_chunked)
+
+    sim_counts = []
+
+    for i in range(0, len(sim_counts_temp), splitting):
+
+        key = sim_counts_temp[i:i + splitting]
+ 
+        sim_counts.append(key)
+
+    final_array = []
+
+    for elem in sim_counts:
+    
+        row_value = ''
+        
+        for item in elem:
+
+            row_value = row_value + rework_result_count(item) 
+
+            if len(row_value) >= cols_items:
+
+                diff = len(row_value) - cols_items
+
+                row_value = row_value[:-diff]
+
+            array_row = split_str(row_value)
+            
+        final_array.append(array_row)
+
+    rework_data = np.array(final_array, dtype='uint8')
+    
+    return rework_data
